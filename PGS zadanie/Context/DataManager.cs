@@ -53,6 +53,8 @@ namespace PGS_zadanie.Context
 
                 var genre = (from g in db.Genres where (g.Name == newBook.Genre.Name) select g).SingleOrDefault();
 
+
+
                 if (author != null)
                 {
                     newBook.Author = author;
@@ -62,6 +64,7 @@ namespace PGS_zadanie.Context
                 {
                     newBook.Genre = genre;
                 }
+
 
                 db.Books.Add(newBook);
 
@@ -95,10 +98,21 @@ namespace PGS_zadanie.Context
                 if (author == null)
                 {
                     db.Genres.Add(newGenre);
-                    
+
                 }
                 db.SaveChanges();
 
+            }
+        }
+
+        public void RemoveBook(int id)
+        {
+            using (var db = new Ctx())
+            {
+                var book = (from b in db.Books where b.ID == id select b).First();
+                if (book != null)
+                    db.Books.Remove(book);
+                db.SaveChanges();
             }
         }
     }

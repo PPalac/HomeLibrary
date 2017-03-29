@@ -39,7 +39,7 @@
                     <th>Autor</th>
                     <th>Gatunek</th>
                     <th>Opcje</th>
-                  
+
                 </tr>
             </thead>
             <tbody>
@@ -50,8 +50,9 @@
                         <td><a href="@Url.Action("Index","Home")">@element.Title</a></td>
                         <td><a href="@Url.Action("Index","Home")"></a>@element.Author.Name @element.Author.Surname</td>
                         <td><a href="@Url.Action("Index","Home")"></a>@element.Genre.Name</td>
-                        <td><button class="btn-info">Edytuj</button><button class="btn-danger">Usuń</button></td>
-                       
+                        <td><a href="@Url.Action("Remove","Home",new { ID = element.ID })" class="btn-danger">Usuń</a></td>
+                           
+
                     </tr>
                 }
             </tbody>

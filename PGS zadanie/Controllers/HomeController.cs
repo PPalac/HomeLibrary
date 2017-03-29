@@ -13,12 +13,22 @@ namespace PGS_zadanie.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Title = "PGS zadanie";
+           
             ViewBag.Section = "Katalog książek";
 
             var DataMng = new DataManager();
             var BookList = DataMng.GetListOfBooks();
             return View(BookList);
+        }
+
+        
+        public ActionResult Remove(int id)
+        {
+
+            var DataMng = new DataManager();
+            DataMng.RemoveBook(id);
+            var BookList = DataMng.GetListOfBooks();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Authors()
