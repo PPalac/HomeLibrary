@@ -23,7 +23,7 @@ namespace PGS_zadanie.Controllers
 
         public ActionResult Authors()
         {
-            ViewBag.Title = "PGS zadanie";
+            
             ViewBag.Section = "Katalog autorów";
 
             var DataMng = new DataManager();
@@ -33,7 +33,7 @@ namespace PGS_zadanie.Controllers
 
         public ActionResult Genres()
         {
-            ViewBag.Title = "PGS zadanie";
+            
             ViewBag.Section = "Katalog gatunków";
 
             var DataMng = new DataManager();

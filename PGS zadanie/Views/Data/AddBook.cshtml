@@ -14,14 +14,14 @@
                     @Html.TextBoxFor(Model => Model.Title)
                     @Html.ValidationMessageFor(Model => Model.Title)
                 </div>
-               
-                 <div class="label">
+
+                <div class="label">
                     @Html.Label("Nazwisko autora")
                 </div>
 
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Author.Surname)
-                     @Html.ValidationMessageFor(Model=>Model.Author.Surname)
+                    @Html.ValidationMessageFor(Model => Model.Author.Surname)
                 </div>
 
                 <div class="label">
@@ -36,13 +36,24 @@
                 <div class="label">
                     @Html.Label("Gatunek")
                 </div>
-                
+
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Genre.Name)
                     @Html.ValidationMessageFor(Model => Model.Genre.Name)
                 </div>
-               
-                 <div>
+
+                <div class="label">
+                    @Html.Label("Opis książki")
+                </div>
+
+
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Description)
+                </div>
+
+
+
+                <div>
                     <input type="submit" value="Dodaj książkę" />
                 </div>
             </fieldset>

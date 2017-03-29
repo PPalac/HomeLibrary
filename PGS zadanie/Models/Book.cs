@@ -25,5 +25,8 @@ namespace PGS_zadanie.Models
         [Required(ErrorMessage = "Nie możesz pozostawić pustego pola")]
         [ForeignKey("GenreID")]
         public virtual Genre Genre { get; set; }
+
+        public string Description { get; set; }
+
     }
 }
