@@ -22,18 +22,23 @@ namespace PGS_zadanie.Controllers
         [HttpPost]
         public ActionResult AddBook(Book newBook)
         {
-            using (var db = new Ctx())
+
+            if (ModelState.IsValid)
             {
-                db.Books.Add(newBook);
-                db.SaveChanges();
+                DataManager dataMng = new DataManager();
+                dataMng.AddBook(newBook);
+                return RedirectToAction("Genres", "Home");
+
             }
-            return RedirectToAction("Index","Home");
+            else
+                return View();
         }
 
         [HttpGet]
         public ActionResult AddAuthor()
         {
             ViewBag.Title = "PGS zadanie";
+
             return View();
         }
 
@@ -41,12 +46,15 @@ namespace PGS_zadanie.Controllers
         [HttpPost]
         public ActionResult AddAuthor(Author newAuthor)
         {
-            using (var db = new Ctx())
+            if (newAuthor.Name != null)
             {
-                db.Authors.Add(newAuthor);
-                db.SaveChanges();
+                DataManager dataMng = new DataManager();
+                dataMng.AddAuthor(newAuthor);
+                return RedirectToAction("Authors", "Home");
+
             }
-            return RedirectToAction("Books", "Home");
+            else
+                return View();
         }
 
         [HttpGet]
@@ -62,12 +70,16 @@ namespace PGS_zadanie.Controllers
         [HttpPost]
         public ActionResult AddGenre(Genre newGenre)
         {
-            using (var db = new Ctx())
+            if (newGenre.Name != null)
             {
-                db.Genres.Add(newGenre);
-                db.SaveChanges();
+                DataManager dataMng = new DataManager();
+                dataMng.AddGenre(newGenre);
+                return RedirectToAction("Genres", "Home");
+
             }
-            return RedirectToAction("Genres","Home");
+            else
+                return View();
+
         }
     }
 }

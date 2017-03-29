@@ -12,6 +12,7 @@
                 </div>
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Title)
+                    @Html.ValidationMessageFor(Model => Model.Title)
                 </div>
                
                  <div class="label">
@@ -20,6 +21,7 @@
 
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Author.Surname)
+                     @Html.ValidationMessageFor(Model=>Model.Author.Surname)
                 </div>
 
                 <div class="label">
@@ -28,6 +30,7 @@
 
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Author.Name)
+                    @Html.ValidationMessageFor(Model => Model.Author.Name)
                 </div>
 
                 <div class="label">
@@ -36,6 +39,7 @@
                 
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Genre.Name)
+                    @Html.ValidationMessageFor(Model => Model.Genre.Name)
                 </div>
                
                  <div>

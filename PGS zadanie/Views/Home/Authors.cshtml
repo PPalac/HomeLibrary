@@ -1,4 +1,7 @@
-﻿<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+﻿@model List<PGS_zadanie.Models.Author>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
     <div class="row placeholders">
@@ -40,10 +43,12 @@
             <tbody>
 
                 <tr>
-
-                    <td></td>
-                    <td><a href="@Url.Action("Index","Home")">nazwisko</a></td>
-                    <td>imie</td>
+                    @foreach (var element in Model)
+                    {
+                        <td></td>
+                        <td><a href="@Url.Action("Index", "Home")">@foreach (var i in element.Books) {@i.Title}</a></td>
+                        <td>imie</td>
+                    }
 
                 </tr>
             </tbody>

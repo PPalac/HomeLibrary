@@ -12,6 +12,7 @@
                 </div>
                 <div class="input-lg">
                     @Html.TextBoxFor(Model => Model.Name)
+                    @Html.ValidationMessageFor(Model=>Model.Name)
                 </div>
                 <div>
                     <input type="submit" value="Dodaj gatunek" />
