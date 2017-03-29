@@ -37,20 +37,28 @@
                     <th>#</th>
                     <th>Nazwisko</th>
                     <th>Imię</th>
+                    <th>Opcje</th>
 
                 </tr>
             </thead>
             <tbody>
+                @foreach (var element in Model)
+                {
+                    <tr>
 
-                <tr>
-                    @foreach (var element in Model)
-                    {
                         <td></td>
-                        <td><a href="@Url.Action("Index", "Home")">@foreach (var i in element.Books) {@i.Title}</a></td>
-                        <td>imie</td>
-                    }
+                        <td><a href="@Url.Action("Index", "Home")">@element.Surname</a></td>
+                        <td><a href="@Url.Action("Index", "Home")">@element.Name</a></td>
+                        <td>
+                            <a href="@Url.Action("RemoveAuthor", "Data", new { ID = element.ID })" class="btn-danger">Usuń</a>
+                            <a href="@Url.Action("EditAuthor", "Data", new { ID = element.ID })" class="btn-info">Edytuj</a>
+                        </td>
+                    </tr>
+                }
 
-                </tr>
+
+
+
             </tbody>
         </table>
     </div>

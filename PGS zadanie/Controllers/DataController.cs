@@ -27,7 +27,7 @@ namespace PGS_zadanie.Controllers
             {
                 DataManager dataMng = new DataManager();
                 dataMng.AddBook(newBook);
-                return RedirectToAction("Genres", "Home");
+                return RedirectToAction("Index", "Home");
 
             }
             else
@@ -80,6 +80,52 @@ namespace PGS_zadanie.Controllers
             else
                 return View();
 
+        }
+
+        public ActionResult RemoveBook(int id)
+        {
+
+            var dataMng = new DataManager();
+            dataMng.RemoveBook(id);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult RemoveAuthor(int id)
+        {
+
+            var dataMng = new DataManager();
+            dataMng.RemoveAuthor(id);
+
+            return RedirectToAction("Authors", "Home");
+        }
+
+        public ActionResult RemoveGenre(int id)
+        {
+
+            var dataMng = new DataManager();
+            dataMng.RemoveGenre(id);
+
+            return RedirectToAction("Genres", "Home");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Book bookToEdit = new Book();
+            using (var db = new Ctx())
+            {
+                var books = db.Books.Include("Author").Include("Genre").ToList();
+                bookToEdit = books.Where(b => b.ID == id).FirstOrDefault();
+            }
+            return View(bookToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Book editedBook)
+        {
+            var dataMng = new DataManager();
+            dataMng.EditBook(editedBook);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

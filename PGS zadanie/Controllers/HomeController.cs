@@ -13,7 +13,7 @@ namespace PGS_zadanie.Controllers
         public ActionResult Index()
         {
 
-           
+
             ViewBag.Section = "Katalog książek";
 
             var DataMng = new DataManager();
@@ -21,19 +21,12 @@ namespace PGS_zadanie.Controllers
             return View(BookList);
         }
 
-        
-        public ActionResult Remove(int id)
-        {
 
-            var DataMng = new DataManager();
-            DataMng.RemoveBook(id);
-            var BookList = DataMng.GetListOfBooks();
-            return RedirectToAction("Index");
-        }
+
 
         public ActionResult Authors()
         {
-            
+
             ViewBag.Section = "Katalog autorów";
 
             var DataMng = new DataManager();
@@ -43,16 +36,19 @@ namespace PGS_zadanie.Controllers
 
         public ActionResult Genres()
         {
-            
+
             ViewBag.Section = "Katalog gatunków";
 
             var DataMng = new DataManager();
-            var GenreList = DataMng.GetListOfGenres(); 
+            var GenreList = DataMng.GetListOfGenres();
             return View(GenreList);
         }
 
-        
-        
+
+
+
+
+
 
 
     }

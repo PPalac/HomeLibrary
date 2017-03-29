@@ -47,6 +47,10 @@
                     <tr>
                         <td></td>
                         <td><a href="@Url.Action("Index","Home")">@element.Name</a></td>
+                        <td>
+                            <a href="@Url.Action("RemoveGenre", "Data", new { ID = element.ID })" class="btn-danger">Usuń</a>
+                            <a href="@Url.Action("EditGenre", "Data", new { ID = element.ID })" class="btn-info">Edytuj</a>
+                        </td>
                     </tr>
                 }
             </tbody>

@@ -1,0 +1,69 @@
+﻿
+@model PGS_zadanie.Models.Book
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div>
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <div class="label">
+                    @Html.Label("Tytuł")
+                </div>
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Title)
+                    @Html.ValidationMessageFor(Model => Model.Title)
+                </div>
+
+                <div class="label">
+                    @Html.Label("Nazwisko autora")
+                </div>
+
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Author.Surname)
+                    @Html.ValidationMessageFor(Model => Model.Author.Surname)
+                </div>
+
+                <div class="label">
+                    @Html.Label("Imię autora")
+                </div>
+
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Author.Name)
+                    @Html.ValidationMessageFor(Model => Model.Author.Name)
+                </div>
+
+                <div class="label">
+                    @Html.Label("Gatunek")
+                </div>
+
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Genre.Name)
+                    @Html.ValidationMessageFor(Model => Model.Genre.Name)
+                </div>
+
+                <div class="label">
+                    @Html.Label("Opis książki")
+                </div>
+
+                
+                <div class="input-lg">
+                    @Html.TextBoxFor(Model => Model.Description)
+                </div>
+                <div class="hidden">
+                    @Html.TextBoxFor(Model => Model.AuthorID);
+                </div>
+                <div class="hidden">
+                    @Html.TextBoxFor(Model => Model.GenreID);
+                </div>
+
+
+                <div>
+                    <input type="submit" value="Zapisz"/>
+                </div>
+            </fieldset>
+
+        }
+
+    </div>
+</div>
