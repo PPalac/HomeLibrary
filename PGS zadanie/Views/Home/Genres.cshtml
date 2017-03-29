@@ -1,0 +1,55 @@
+﻿@model List<PGS_zadanie.Models.Genre>
+
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Index", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/pexels-photo-300412.jpeg">
+            </a>
+            <h4>Książki</h4>
+
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Authors", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/typewriter-keys-mechanically-letters.jpg">
+            </a>
+            <h4>Autorzy</h4>
+
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Genres", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/genresandthemes.jpg">
+            </a>
+            <h4>Gatunki</h4>
+
+        </div>
+
+    </div>
+
+    <h2 class="sub-header">Katalog gatunków</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>
+                        Nazwa gatunku
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var element in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td><a href="@Url.Action("Index","Home")">@element.Name</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

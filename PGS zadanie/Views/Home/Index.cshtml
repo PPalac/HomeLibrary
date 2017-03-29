@@ -1,0 +1,57 @@
+﻿@model List<PGS_zadanie.Models.Book>
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Index", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/pexels-photo-300412.jpeg">
+            </a>
+            <h4>Książki</h4>
+
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Authors", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/typewriter-keys-mechanically-letters.jpg">
+            </a>
+            <h4>Autorzy</h4>
+
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <a href="@Url.Action("Genres", "Home")" title="Książki">
+                <img alt="List View" src="~/Images/genresandthemes.jpg">
+            </a>
+            <h4>Gatunki</h4>
+
+        </div>
+
+    </div>
+
+    <h2 class="sub-header">Katalog książek</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tytuł</th>
+                    <th>Autor</th>
+                    <th>Gatunek</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var element in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td><a href="@Url.Action("Index","Home")">@element.Title</a></td>
+                        <td><a href="@Url.Action("Index","Home")"></a>@element.Author.Name @element.Author.Surname</td>
+                        <td><a href="@Url.Action("Index","Home")"></a>@element.Genre.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
