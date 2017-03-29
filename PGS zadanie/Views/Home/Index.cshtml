@@ -46,10 +46,10 @@
                 @foreach (var element in Model)
                 {
                     <tr>
-                        <td></td>
-                        <td><a href="@Url.Action("Index","Home")">@element.Title</a></td>
-                        <td><a href="@Url.Action("Index","Home")"></a>@element.Author.Name @element.Author.Surname</td>
-                        <td><a href="@Url.Action("Index","Home")"></a>@element.Genre.Name</td>
+                        <td><details>@element.Description</details></td>
+                        <td>@element.Title</td>
+                        <td><a href="@Url.Action("AuthorDetails","Home", new { ID = element.AuthorID })"></a>@element.Author.Name @element.Author.Surname</td>
+                        <td><a href="@Url.Action("GenreDetails","Home", new { ID = element.GenreID })"></a>@element.Genre.Name</td>
                         <td>
                             <a href="@Url.Action("Remove","Data",new { ID = element.ID })" class="btn-danger">Usuń</a>
                             <a href="@Url.Action("Edit","Data",new { ID = element.ID })" class="btn-info">Edytuj</a>

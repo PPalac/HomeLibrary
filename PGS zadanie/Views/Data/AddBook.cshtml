@@ -45,18 +45,15 @@
                 <div class="label">
                     @Html.Label("Opis książki")
                 </div>
-
-
                 <div class="input-lg">
-                    @Html.TextBoxFor(Model => Model.Description)
+                    @Html.TextAreaFor(model => model.Description, new { cols = 60, rows = 10, style = "width:350px" })
                 </div>
-
-
-
                 <div>
-                    <input type="submit" value="Dodaj książkę" />
+                    <input class="top-buffer" type="submit" value="Dodaj książkę" />
                 </div>
+
             </fieldset>
+            
 
         }
 

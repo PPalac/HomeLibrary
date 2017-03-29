@@ -17,6 +17,9 @@ body {
     margin: 0;
 }
 
+.top-buffer{
+    margin-top:250px;
+}
 article,
 aside,
 details,

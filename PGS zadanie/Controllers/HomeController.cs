@@ -44,6 +44,26 @@ namespace PGS_zadanie.Controllers
             return View(GenreList);
         }
 
+        public ActionResult BookDetails(int id)
+        {
+            Book bookInf = new Book();
+            using (var db = new Ctx())
+            {
+                bookInf = db.Books.Where(b => b.ID == id).FirstOrDefault();
+            }
+                return View(bookInf);
+        }
+
+        public ActionResult AuthorDetail(int id)
+        {
+            return View();
+        }
+
+        public ActionResult GenreDetail(int id)
+        {
+            return View();
+        }
+
 
 
 
