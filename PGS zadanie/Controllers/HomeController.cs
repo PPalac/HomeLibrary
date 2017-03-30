@@ -100,7 +100,21 @@ namespace PGS_zadanie.Controllers
             return View(genreInf);
         }
 
+        public ActionResult Search()
+        {
+            CustomViewModel listContainer = new CustomViewModel();
+            return View(listContainer);
+        }
 
+        [HttpPost]
+        public ActionResult Search(string Search)
+        {
+            CustomViewModel listContainer = new CustomViewModel();
+            DataManager DataMng = new DataManager();
+
+            listContainer = DataMng.Search(Search);
+            return View(listContainer);
+        }
 
 
 

@@ -14,7 +14,7 @@ namespace PGS_zadanie.Context
             using (var db = new Ctx())
             {
 
-                GenreList = db.Genres.OrderBy(g=>g.Name).ToList();
+                GenreList = db.Genres.OrderBy(g => g.Name).ToList();
             }
             return GenreList;
         }
@@ -26,7 +26,7 @@ namespace PGS_zadanie.Context
             using (var db = new Ctx())
             {
 
-                AuthorList = db.Authors.Include("Books").OrderBy(a=>a.Surname).ToList();
+                AuthorList = db.Authors.Include("Books").OrderBy(a => a.Surname).ToList();
             }
             return AuthorList;
         }
@@ -50,7 +50,7 @@ namespace PGS_zadanie.Context
             using (var db = new Ctx())
             {
 
-                BookList = db.Books.Include("Author").Include("Genre").OrderBy(b=>b.Title).ToList();
+                BookList = db.Books.Include("Author").Include("Genre").OrderBy(b => b.Title).ToList();
             }
             return BookList;
         }
@@ -202,7 +202,7 @@ namespace PGS_zadanie.Context
             }
         }
 
-        internal void EditGenre(Genre editedGenre)
+        public void EditGenre(Genre editedGenre)
         {
             using (var db = new Ctx())
             {
@@ -211,6 +211,21 @@ namespace PGS_zadanie.Context
 
                 db.SaveChanges();
             }
+        }
+
+        public CustomViewModel Search(string searched)
+        {
+            var Model = new CustomViewModel();
+            if (searched.Count() > 0)
+            {
+                using (var db = new Ctx())
+                {
+                    Model.Books = (from b in db.Books where b.Title.Contains(searched) select b).ToList();
+                    Model.Authors = (from a in db.Authors where (a.Name.Contains(searched) || a.Surname.Contains(searched)) select a).ToList();
+                    Model.Genres = (from g in db.Genres where g.Name.Contains(searched) select g).ToList();
+                }
+            }
+            return Model;
         }
     }
 }

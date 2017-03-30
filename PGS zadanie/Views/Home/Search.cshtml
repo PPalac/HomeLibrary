@@ -1,0 +1,57 @@
+﻿@model PGS_zadanie.Models.CustomViewModel
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    @using (Html.BeginForm())
+    {
+        <div class="label">Czego szukasz?</div>
+        <div class="input-lg">@Html.TextBox("Search")</div>
+        <input type="submit" value="Szukaj" />
+    }
+    <p> </p>
+    <div class="col-lg-3"><h3>Książki</h3>
+        <ol>
+            
+            @if (Model.Books != null)
+            {
+                foreach (var element in Model.Books)
+                {
+                <li><a href="@Url.Action("BookDetails", "Home", new { ID = element.ID })">@element.Title</a></li>
+                }
+            }
+
+        </ol>
+    </div>
+
+    <div class="col-lg-3"><h3>Autorzy</h3>
+        <ol>
+            
+            @if (Model.Authors != null)
+            {
+                foreach (var element in Model.Authors)
+                {
+                    <li><a href="@Url.Action("AuthorDetails", "Home", new { ID = element.ID })">@element.Surname @element.Name</a></li>
+                }
+            }
+
+        </ol>
+    </div>
+
+    <div class="col-lg-3"><h3>Gatunki</h3>
+        <ol>
+
+            @if (Model.Genres != null)
+            {
+                foreach (var element in Model.Genres)
+                {
+                    <li><a href="@Url.Action("GenreDetails", "Home", new { ID = element.ID })">@element.Name</a></li>
+                }
+            }
+
+        </ol>
+    </div>
+
+
+
+</div>
