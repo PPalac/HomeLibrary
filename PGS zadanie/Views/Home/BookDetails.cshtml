@@ -1,0 +1,23 @@
+﻿@model PGS_zadanie.Models.Book
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+    <div class="info" style="font-size:x-large">Tytuł: <b style="color:burlywood"> @Model.Title</b></div>
+    <p> </p>
+    <div class="info" style="font-size:x-large">Imię autora: <b style="color:burlywood">@Model.Author.Name</b></div>
+    <p> </p>
+    <div class="info" style="font-size:x-large">Nazwisko autora: <b style="color:burlywood"> @Model.Author.Surname</b></div>
+    <p> </p>
+    <div class="info" style="font-size:x-large">Gatunek: <b style="color:burlywood"> @Model.Genre.Name</b></div>
+    <p> </p>
+    <p> </p>
+    <div class="info" style="font-size:x-large">Opis:</div>
+    <p> </p>
+
+    <p style="max-width:450px; font-size:x-large"> <b style="color:burlywood">  @Model.Description</b></p>
+     
+
+
+</div>

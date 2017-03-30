@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Context\ApplicationDataContext.cs" />
+    <Compile Include="Context\BooksDBInitializer.cs" />
     <Compile Include="Context\DataManager.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -230,10 +231,25 @@
     <Content Include="Views\Data\AddGenre.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Data\Edit.cshtml" />
+    <Content Include="Views\Data\EditBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\EditAuthor.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\EditGenre.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\BookDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AuthorDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\GenreDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

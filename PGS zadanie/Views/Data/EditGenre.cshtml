@@ -1,0 +1,26 @@
+﻿
+@model PGS_zadanie.Models.Genre
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div>
+            @using (Html.BeginForm())
+            {
+                <fieldset>
+                    <div class="label">
+                        @Html.Label("Gatunek")
+                    </div>
+                    <div class="input-lg">
+                        @Html.TextBoxFor(Model => Model.Name)
+                        @Html.ValidationMessageFor(Model => Model.Name)
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Zapisz" />
+                    </div>
+                </fieldset>
+
+            }
+
+        </div>
+    </div>

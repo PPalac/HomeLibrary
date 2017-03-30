@@ -10,37 +10,63 @@ namespace PGS_zadanie.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
 
+            var BookList = new List<Book>();
+            var DataMng = new DataManager();
 
             ViewBag.Section = "Katalog książek";
 
-            var DataMng = new DataManager();
-            var BookList = DataMng.GetListOfBooks();
+            if (id == 0)
+            {
+                BookList = DataMng.GetListOfBooksByTitle();
+            }
+
+            if (id == 1)
+            {
+                BookList = DataMng.GetListOfBooksByAuthor();
+            }
+
+            if (id == 2)
+            {
+                BookList = DataMng.GetListOfBooksByGenere();
+            }
+
+
             return View(BookList);
         }
 
 
 
-
-        public ActionResult Authors()
+        public ActionResult Authors(int id)
         {
+            var DataMng = new DataManager();
+            var AuthorList = new List<Author>();
 
             ViewBag.Section = "Katalog autorów";
 
-            var DataMng = new DataManager();
-            var AuthorList = DataMng.GetListOfAuthors();
+            if (id == 0)
+            {
+                AuthorList = DataMng.GetListOfAuthorsBySurname();
+            }
+            if (id == 1)
+            {
+                AuthorList = DataMng.GetListOfAuthorsByName();
+            }
+
             return View(AuthorList);
         }
-
+        
         public ActionResult Genres()
         {
+            var DataMng = new DataManager();
+            var GenreList = new List<Genre>();
 
             ViewBag.Section = "Katalog gatunków";
 
-            var DataMng = new DataManager();
-            var GenreList = DataMng.GetListOfGenres();
+            GenreList = DataMng.GetListOfGenres();
+            
             return View(GenreList);
         }
 
@@ -49,19 +75,29 @@ namespace PGS_zadanie.Controllers
             Book bookInf = new Book();
             using (var db = new Ctx())
             {
-                bookInf = db.Books.Where(b => b.ID == id).FirstOrDefault();
+                bookInf = db.Books.Include("Author").Include("Genre").Where(b => b.ID == id).FirstOrDefault();
             }
-                return View(bookInf);
+            return View(bookInf);
         }
 
-        public ActionResult AuthorDetail(int id)
+        public ActionResult AuthorDetails(int id)
         {
-            return View();
+            Author authorInf = new Author();
+            using (var db = new Ctx())
+            {
+                authorInf = db.Authors.Include("Books").Where(b => b.ID == id).FirstOrDefault();
+            }
+            return View(authorInf);
         }
 
-        public ActionResult GenreDetail(int id)
+        public ActionResult GenreDetails(int id)
         {
-            return View();
+            Genre genreInf = new Genre();
+            using (var db = new Ctx())
+            {
+                genreInf = db.Genres.Include("Books").Where(b => b.ID == id).FirstOrDefault();
+            }
+            return View(genreInf);
         }
 
 

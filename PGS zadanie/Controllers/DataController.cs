@@ -66,7 +66,7 @@ namespace PGS_zadanie.Controllers
         }
 
 
-
+        //Dodaj nowy gatunek
         [HttpPost]
         public ActionResult AddGenre(Genre newGenre)
         {
@@ -109,7 +109,7 @@ namespace PGS_zadanie.Controllers
             return RedirectToAction("Genres", "Home");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult EditBook(int id)
         {
             Book bookToEdit = new Book();
             using (var db = new Ctx())
@@ -121,11 +121,50 @@ namespace PGS_zadanie.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Book editedBook)
+        public ActionResult EditBook(Book editedBook)
         {
             var dataMng = new DataManager();
             dataMng.EditBook(editedBook);
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult EditAuthor(int id)
+        {
+            Author authorToEdit = new Author();
+            using (var db = new Ctx())
+            {
+                var authors = db.Authors.Include("Books").ToList();
+                authorToEdit = authors.Where(a => a.ID == id).FirstOrDefault();
+            }
+            return View(authorToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult EditAuthor(Author editedAuthor)
+        {
+            var dataMng = new DataManager();
+            dataMng.EditAuthor(editedAuthor);
+            return RedirectToAction("Authors", "Home");
+        }
+
+        public ActionResult EditGenre(int id)
+        {
+            Genre genreToEdit = new Genre();
+            using (var db = new Ctx())
+            {
+                var genres = db.Genres.Include("Books").ToList();
+                genreToEdit = genres.Where(g => g.ID == id).FirstOrDefault();
+            }
+            return View(genreToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult EditGenre(Genre editedGenre)
+        {
+            var dataMng = new DataManager();
+            dataMng.EditGenre(editedGenre);
+            return RedirectToAction("Index", "Home");
+        }
+        
     }
 }

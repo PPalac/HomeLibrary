@@ -39,17 +39,19 @@
                     <th>
                         Nazwa gatunku
                     </th>
+                    <th>Opcje</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var element in Model)
                 {
                     <tr>
-                        <td></td>
-                        <td><a href="@Url.Action("Index","Home")">@element.Name</a></td>
+                        <td>@(Model.IndexOf(element)+1)</td>
+                        <td>@element.Name</td>
                         <td>
-                            <a href="@Url.Action("RemoveGenre", "Data", new { ID = element.ID })" class="btn-danger">Usuń</a>
+                            <a href="@Url.Action("GenreDetails", "Home", new { ID = element.ID })" class="btn-default">Szczegóły</a>
                             <a href="@Url.Action("EditGenre", "Data", new { ID = element.ID })" class="btn-info">Edytuj</a>
+                            <a href="@Url.Action("RemoveGenre", "Data", new { ID = element.ID })" class="btn-danger">Usuń</a>
                         </td>
                     </tr>
                 }

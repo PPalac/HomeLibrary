@@ -6,21 +6,21 @@
 
     <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
-            <a href="@Url.Action("Index", "Home")" title="Książki">
+            <a href="@Url.Action("Index", "Home", new { ID = 0 })" title="Książki">
                 <img alt="List View" src="~/Images/pexels-photo-300412.jpeg">
             </a>
             <h4>Książki</h4>
 
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-            <a href="@Url.Action("Authors", "Home")" title="Książki">
+            <a href="@Url.Action("Authors", "Home", new { ID = 0 })" title="Książki">
                 <img alt="List View" src="~/Images/typewriter-keys-mechanically-letters.jpg">
             </a>
             <h4>Autorzy</h4>
 
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-            <a href="@Url.Action("Genres", "Home")" title="Książki">
+            <a href="@Url.Action("Genres", "Home", new { ID = 0 })" title="Książki">
                 <img alt="List View" src="~/Images/genresandthemes.jpg">
             </a>
             <h4>Gatunki</h4>
@@ -35,9 +35,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tytuł</th>
-                    <th>Autor</th>
-                    <th>Gatunek</th>
+                    <th><a href="@Url.Action("Index", "Home", new { ID = 0 })">Tytuł</a></th>
+                    <th><a href="@Url.Action("Index", "Home", new { ID = 1 })">Autor</a></th>
+                    <th><a href="@Url.Action("Index", "Home", new { ID = 2 })">Gatunek</a></th>
                     <th>Opcje</th>
 
                 </tr>
@@ -46,13 +46,14 @@
                 @foreach (var element in Model)
                 {
                     <tr>
-                        <td><details>@element.Description</details></td>
+                        <td>@(Model.IndexOf(element) + 1)</td>
                         <td>@element.Title</td>
-                        <td><a href="@Url.Action("AuthorDetails","Home", new { ID = element.AuthorID })"></a>@element.Author.Name @element.Author.Surname</td>
-                        <td><a href="@Url.Action("GenreDetails","Home", new { ID = element.GenreID })"></a>@element.Genre.Name</td>
+                        <td>@element.Author.Surname @element.Author.Name</td>
+                        <td>@element.Genre.Name</td>
                         <td>
-                            <a href="@Url.Action("Remove","Data",new { ID = element.ID })" class="btn-danger">Usuń</a>
-                            <a href="@Url.Action("Edit","Data",new { ID = element.ID })" class="btn-info">Edytuj</a>
+                            <a href="@Url.Action("BookDetails", "Home", new { ID = element.ID })" class="btn-default">Szczegóły</a>
+                            <a href="@Url.Action("EditBook","Data",new { ID = element.ID })" class="btn-info">Edytuj</a>
+                            <a href="@Url.Action("RemoveBook","Data",new { ID = element.ID })" class="btn-danger">Usuń</a>
                         </td>
 
 
